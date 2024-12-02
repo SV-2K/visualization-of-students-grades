@@ -1,0 +1,8 @@
+{
+  "require": {
+    "phpoffice/phpspreadsheet": "^3.4"
+  },
+  "autoload": {
+
+  }
+}
