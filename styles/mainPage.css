@@ -1,0 +1,72 @@
+body {
+    --main-color: #000;
+    --accent-color: #79d200;
+    background-color: var(--main-color);
+}
+header {
+    display: flex;
+    align-items: center;
+}
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: var(--main-color);
+    border: solid 1px var(--accent-color);
+}
+.header-button {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+    padding: 5px 10px;
+}
+.header-button2 {
+    background-color: var(--main-color);
+    color: var(--accent-color);
+    padding: 5px 10px;
+    border: solid 1px var(--accent-color);
+}
+main {
+    width: 1000px;
+    min-height: 300px;
+    margin: 75px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.menu {
+    height: 50px;
+    background-color: var(--accent-color);
+}
+.charts {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    border: solid 1px var(--accent-color);
+    min-height: 300px;
+}
+p{
+    margin: 0;
+    color: var(--accent-color);
+}
+.top-info, .bottom-info {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+#group-info, #subject-grade-ratio {
+    width: 400px;
+    height: 300px;
+    background-color: var(--accent-color);
+
+    border: solid 1px var(--accent-color);
+}
+#groups-grade-ratio, #average-grade {
+    height: 300px;
+    width: 600px;
+    background-color: var(--main-color);
+    border: solid 1px var(--accent-color);
+}

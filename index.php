@@ -19,95 +19,98 @@
 
     try {
         $spreadsheet = IOFactory::load('example.xlsx');
-        $sheet = $spreadsheet->getSheet(3);
+        $sheetCount = $spreadsheet->getSheetCount();
 
-        $groupName = $sheet->getTitle();
-        enterGroup($groupName);
-        $groupId = getGroupId($groupName);
+        for ($var = 0; $var < $sheetCount; $var++) {
 
-        #############################
-        $monitoringName = 'Monitoring bla bla bla';
-        $monitoringId =  getMonitoringId($monitoringName);
-        #############################
+            $sheet = $spreadsheet->getSheet($var);
 
-        $columnStopper = 99; #Столбец, после которого информация не считывается
-        $rowStopper = 99;
-        $lastCheckedRow = 0;
-        $lastCheckedColumn = 0;
+            $groupName = $sheet->getTitle();
+            enterGroup($groupName);
+            $groupId = getGroupId($groupName);
 
-        #Определение границ таблицы
-        for ($i = 4; $i < $columnStopper; $i++) {
-            #Считывает столбец, на котором заканчиваются наименования предметов
-            if ($sheet->getCell([$i, 13]) == 'Количество пропусков') {
-                $columnStopper = $i;  #Как только доходит до конца
-                break;
-            }
-        }
-        for ($i = 17; $i < $rowStopper; $i++) {
+            #############################
+            $monitoringName = 'Monitoring bla bla bla';
+            $monitoringId = getMonitoringId($monitoringName);
+            #############################
 
-            #Вычисление последнего ученика группы
-            if ($sheet->getCell("C$i") == '' ||
-                $sheet->getCell("A$i") == '')
-            {
-                $rowStopper = $i; #Метка того, что ниже этой строки ничего ползного нету
-                break;
-            }
-        }
+            $columnStopper = 99; #Столбец, после которого информация не считывается
+            $rowStopper = 99;
+            $lastCheckedRow = 0;
+            $lastCheckedColumn = 0;
 
-        echo '<table>';
-
-
-        foreach ($sheet->getRowIterator() as $rowCounter => $row) {
-            $columnCounter = 0;
-
-            #Скип всех строк до 17
-            if ($rowCounter < 17) continue;
-            if ($rowCounter >= $rowStopper) break;
-
-            echo '<tr>';
-
-            $cellIterator = $row->getCellIterator();
-
-            foreach ($cellIterator as $cell) {
-                $columnCounter++;
-
-                if ($columnCounter < 4) continue;
-                if ($columnCounter >= $columnStopper) break;
-
-                $subjectName = $sheet->getCell([$columnCounter, 14]);
-                if ($rowCounter === 17) {
-                    enterSubject($subjectName);
+            #Определение границ таблицы
+            for ($i = 4; $i < $columnStopper; $i++) {
+                #Считывает столбец, на котором заканчиваются наименования предметов
+                if ($sheet->getCell([$i, 13]) == 'Количество пропусков') {
+                    $columnStopper = $i;  #Как только доходит до конца
+                    break;
                 }
-                $subjectId = getSubjectId($subjectName);
+            }
+            for ($i = 17; $i < $rowStopper; $i++) {
 
-                #Это нужно чтобы студент и посещаемость не заносились в БД после просмотра каждой оценки
-                #то есть, на каждой строке имя студента и его посещаемость заносятся только 1 раз
-                if ($rowCounter > $lastCheckedRow) {
-                    $lastCheckedRow = $rowCounter;
+                #Вычисление последнего ученика группы
+                if ($sheet->getCell("C$i") == '' ||
+                    $sheet->getCell("A$i") == '') {
+                    $rowStopper = $i; #Метка того, что ниже этой строки ничего ползного нету
+                    break;
+                }
+            }
 
-                    $student = $sheet->getCell([3, $rowCounter]);
-                    enterStudent($student, $groupId);
-                    $studentId = getStudentId($student, $groupId);
+            echo '<table>';
 
-                    $invalidAbsenceHours = $sheet->getCell([$columnStopper + 2, $rowCounter]);
-                    $validAbsenceHours = $sheet->getCell([$columnStopper + 1, $rowCounter]);
-                    enterAbsence($invalidAbsenceHours, $validAbsenceHours, $studentId, $monitoringId);
+
+            foreach ($sheet->getRowIterator() as $rowCounter => $row) {
+                $columnCounter = 0;
+
+                #Скип всех строк до 17
+                if ($rowCounter < 17) continue;
+                if ($rowCounter >= $rowStopper) break;
+
+                echo '<tr>';
+
+                $cellIterator = $row->getCellIterator();
+
+                foreach ($cellIterator as $cell) {
+                    $columnCounter++;
+
+                    if ($columnCounter < 4) continue;
+                    if ($columnCounter >= $columnStopper) break;
+
+                    $subjectName = $sheet->getCell([$columnCounter, 14]);
+                    if ($rowCounter === 17) {
+                        enterSubject($subjectName);
+                    }
+                    $subjectId = getSubjectId($subjectName);
+
+                    #Это нужно чтобы студент и посещаемость не заносились в БД после просмотра каждой оценки
+                    #то есть, на каждой строке имя студента и его посещаемость заносятся только 1 раз
+                    if ($rowCounter > $lastCheckedRow) {
+                        $lastCheckedRow = $rowCounter;
+
+                        $student = $sheet->getCell([3, $rowCounter]);
+                        enterStudent($student, $groupId);
+                        $studentId = getStudentId($student, $groupId);
+
+                        $invalidAbsenceHours = $sheet->getCell([$columnStopper + 2, $rowCounter]);
+                        $validAbsenceHours = $sheet->getCell([$columnStopper + 1, $rowCounter]);
+                        enterAbsence($invalidAbsenceHours, $validAbsenceHours, $studentId, $monitoringId);
+
+                    }
+
+                    $grade = $cell->getValue();
+                    enterGrade($cell, $subjectId, $studentId, $monitoringId);
+
+                    echo '<td>';
+                    echo $cell->getValue();
+                    echo '</td>';
 
                 }
-
-                $grade = $cell->getValue();
-                enterGrade($cell, $subjectId, $studentId, $monitoringId);
-
-                echo '<td>';
-                echo $cell->getValue();
-                echo '</td>';
-
+                echo '</tr>';
             }
-            echo '</tr>';
+            echo '</table>';
+            echo '<br>';
         }
-        echo '</table>';
-        echo '<br>';
-
     } catch (\PhpOffice\PhpSpreadsheet\Reader\Exception $e) {
         echo 'Ошибка при чтении файла: ' . $e->getMessage();
     }
