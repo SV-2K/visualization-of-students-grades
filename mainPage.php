@@ -6,15 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles/mainPage.css">
+    <link rel="stylesheet" href="node_modules/c3/c3.min.css">
     <title>Document</title>
 </head>
 <body>
     <header>
         <div class="top-menu">
-            <div class="header-button">Предмет</div>
+            <div class="header-button2">Предмет</div>
             <div class="header-button">Группа</div>
             <div class="header-button">Отделение</div>
-            <div class="header-button2">Колледж</div>
+            <div class="header-button">Колледж</div>
         </div>
     </header>
     <main>
@@ -33,8 +34,10 @@
             </div>
         </div>
     </main>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/c3/c3.min.js"></script>
-    <script src="test/doughnut-chart.js"></script>
+    <script src="node_modules/c3/node_modules/d3/dist/d3.min.js"></script>
+    <script src="node_modules/c3/c3.min.js"></script>
+    <script src="jsGraphics/subjectAverageGrade.js"></script>
+    <script src="jsGraphics/subjectGroupsGradeRatio.js"></script>
+    <script src="jsGraphics/subjectGradeRatio.js"
 </body>
 </html>
