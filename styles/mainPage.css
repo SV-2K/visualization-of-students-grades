@@ -67,6 +67,6 @@ p{
 #groups-grade-ratio, #average-grade {
     height: 300px;
     width: 600px;
-    background-color: var(--main-color);
+    background-color: grey;
     border: solid 1px var(--accent-color);
 }
