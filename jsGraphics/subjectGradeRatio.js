@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('dbData/subjectAverageGradeData.php')
+    fetch('dbData/subjectGradeRatioData.php')
         .then(response => response.json())
         .then(data => {
             c3.generate({

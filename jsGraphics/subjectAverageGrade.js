@@ -5,14 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
             c3.generate({
                 bindto: '#average-grade',
                 data: {
-                    // columns: data,
-                    columns: [
-                        ['9ПР-4.24К', 4.79],
-                        ['9ПР-1.24', 4.77],
-                        ['9БД-1.24К', 4.77],
-                        ['9ПР-3.24', 4.50],
-                        ['9ПР-2.24', 4.00]
-                    ],
+                    columns: data,
                     type: 'bar'
                 },
                 legend: {

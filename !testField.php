@@ -1,11 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 <?php
-header('Content-Type: application/json');
-
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=monitoring", 'root', '12345678'); #Подключение к БД
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-}
+require 'dbRequests.php';
+global $pdo;
 
 $stmt = $pdo->prepare('
 SELECT 
@@ -30,11 +35,13 @@ ORDER BY
 $stmt->execute([
     'subject_name' => 'Литература (Рудакова Л.В.)'
 ]);
-$res = $stmt->fetchAll();
+$res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$data = [];
-foreach ($res as $row) {
-    $data[] = [$row['group_name'], round((float)$row['average_grade'], 2)];
-}
+echo '<pre>';
 
-echo json_encode($data);
+var_dump($res);
+
+echo '</pre>';
+?>
+</body>
+</html>

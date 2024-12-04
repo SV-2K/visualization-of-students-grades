@@ -21,7 +21,7 @@
     <main>
         <p>some_file_name.xlsx</p>
         <div class="menu">
-            <!--       -->
+
         </div>
         <div class="charts">
             <div class="top-info">
