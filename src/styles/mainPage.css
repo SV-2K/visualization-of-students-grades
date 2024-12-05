@@ -1,6 +1,9 @@
 body {
     --main-color: #000;
     --accent-color: #79d200;
+    /*--main-color: #001e01;*/
+    /*--accent-color: #f2a96d;*/
+    font-family: 'JetBrains Mono', monospace;
     background-color: var(--main-color);
 }
 header {
@@ -57,11 +60,9 @@ p{
     flex-direction: row;
     gap: 5px;
 }
-#group-info, #subject-grade-ratio {
+.group-info, #subject-grade-ratio {
     width: 400px;
-    height: 300px;
     background-color: var(--accent-color);
-
     border: solid 1px var(--accent-color);
 }
 #groups-grade-ratio, #average-grade {
@@ -69,4 +70,38 @@ p{
     width: 600px;
     background-color: grey;
     border: solid 1px var(--accent-color);
+}
+.group-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    font-size: 15px;
+}
+.group-info p {
+    color: var(--accent-color);
+    background-color: var(--main-color);
+    padding: 5px;
+}
+.label {
+    margin-right: auto;
+}
+.subject-name {
+    text-transform: uppercase;
+}
+.info-container {
+    display: flex;
+    gap: 5px;
+}
+.info-container .value {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+}
+.small-text {
+    font-size: 12px;
+}
+.black {
+    flex-grow: 1;
+    background-color: var(--main-color);
+    border: solid 3px var(--main-color);
 }
