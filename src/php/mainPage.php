@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/mainPage.css">
-    <link rel="stylesheet" href="node_modules/c3/c3.min.css">
+    <link rel="stylesheet" href="../styles/mainPage.css">
+    <link rel="stylesheet" href="../../node_modules/c3/c3.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
         <p>some_file_name.xlsx</p>
         <div class="menu">
             <form method="post">
-                <select name="subjects">
+                <select name="subjects" onchange="this.form.submit()">
                     <?php
                     require 'dbConnect.php';
                     global $pdo;
@@ -49,10 +49,10 @@
             </div>
         </div>
     </main>
-    <script src="node_modules/c3/node_modules/d3/dist/d3.min.js"></script>
-    <script src="node_modules/c3/c3.min.js"></script>
-    <script src="jsGraphics/subjectAverageGrade.js"></script>
-    <script src="jsGraphics/subjectGroupsGradeRatio.js"></script>
-    <script src="jsGraphics/subjectGradeRatio.js"
+    <script src="../../node_modules/c3/node_modules/d3/dist/d3.min.js"></script>
+    <script src="../../node_modules/c3/c3.min.js"></script>
+    <script src="../jsGraphics/subjectAverageGrade.js"></script>
+    <script src="../jsGraphics/subjectGroupsGradeRatio.js"></script>
+    <script src="../jsGraphics/subjectGradeRatio.js"
 </body>
 </html>
