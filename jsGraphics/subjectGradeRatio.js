@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
             c3.generate({
                 bindto: '#subject-grade-ratio',
                 data: {
-                    // columns: data,
-                    columns: [
-                        ['5', 13, 12, 12, 10, 8],
-                        ['4', 7, 8, 8, 7, 10],
-                        ['3', 3, 4, 3, 6, 2],
-                        ['2', 1, 1, 1, 2, 4]
-                    ],
+                    columns: data.grades,
+                    // columns: [
+                    //     ['5', 13, 12, 12, 10, 8],
+                    //     ['4', 7, 8, 8, 7, 10],
+                    //     ['3', 3, 4, 3, 6, 2],
+                    //     ['2', 1, 1, 1, 2, 4]
+                    // ],
                     type: 'donut'
                 },
                 legend: {

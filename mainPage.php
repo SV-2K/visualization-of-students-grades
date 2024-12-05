@@ -21,11 +21,26 @@
     <main>
         <p>some_file_name.xlsx</p>
         <div class="menu">
+            <form method="post">
+                <select name="subjects">
+                    <?php
+                    require 'dbConnect.php';
+                    global $pdo;
 
+                    $stmt = $pdo->query('SELECT name FROM subjects');
+
+                    while ($subject = $stmt->fetch()):
+                    ?>
+                    <option>
+                        <?= $subject['name'] ?>
+                    </option>
+                    <?php endwhile; ?>
+                </select>
+            </form>
         </div>
         <div class="charts">
             <div class="top-info">
-                <div id="group-info">Some bullshit in here</div>
+                <div id="group-info">Something in here</div>
                 <div id="average-grade"></div>
             </div>
             <div class="bottom-info">
