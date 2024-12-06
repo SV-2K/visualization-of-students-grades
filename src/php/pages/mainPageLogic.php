@@ -2,8 +2,6 @@
 require '../db/dbConnect.php';
 global $pdo;
 
-$selectedOption = isset($_POST['subject']) ? $_POST['subject'] : NULL;
-
 if (isset($_POST['subject'])) {
     $subjectName = $_POST['subject'];
 

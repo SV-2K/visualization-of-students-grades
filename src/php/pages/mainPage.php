@@ -27,8 +27,15 @@
                     <?php
                     require '../db/dbConnect.php';
                     require 'mainPageLogic.php';
+                    require '../graphics/subject/averageGrade.php';
+                    require '../graphics/subject/subjectGradeRatio.php';
+                    require '../graphics/subject/groupsGradeRatio.php';
+
                     global $pdo, $selectedOption, $averageGrade, $subjectName, $absolutePerformance,
                            $qualityPerformance, $groupsCount, $studentsCount;
+
+                    $subjectName = $_POST['subject'];
+                    $selectedOption = isset($_POST['subject']) ? $_POST['subject'] : NULL;
 
                     $stmt = $pdo->query('SELECT name FROM subjects');
 
@@ -76,18 +83,33 @@
                     </div>
                     <div class="black"></div>
                 </div>
-                <div id="average-grade"></div>
+                <div id="average-grade">
+                    <?php
+                    if (!empty($selectedOption)) {
+                        generateAveradeGradeChart($selectedOption);
+                    }
+                    ?>
+                </div>
             </div>
             <div class="bottom-info">
-                <div id="groups-grade-ratio"></div>
-                <div id="subject-grade-ratio"></div>
+                <div id="groups-grade-ratio">
+                    <?php
+                    if (!empty($selectedOption)) {
+                        generateGroupsGradeRatioChart($selectedOption);
+                    }
+                    ?>
+                </div>
+                <div id="subject-grade-ratio">
+                    <?php
+                    if (!empty($selectedOption)) {
+                        generateGradeRatioChart($selectedOption);
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </main>
     <script src="../../../node_modules/c3/node_modules/d3/dist/d3.min.js"></script>
     <script src="../../../node_modules/c3/c3.min.js"></script>
-    <script src="../../jsGraphics/subjectAverageGrade.js"></script>
-    <script src="../../jsGraphics/subjectGroupsGradeRatio.js"></script>
-    <script src="../../jsGraphics/subjectGradeRatio.js"
 </body>
 </html>
