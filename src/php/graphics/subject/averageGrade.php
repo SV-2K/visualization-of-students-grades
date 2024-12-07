@@ -48,9 +48,8 @@ function generateAveradeGradeChart($subjectName)
                 axis: {
                     rotated: true,
                     y: {
-                        min: 3.5,
                         tick: {
-                            format: d3.format(".2f")
+                            format: d3.format(".1f")
                         }
                     }
                 },

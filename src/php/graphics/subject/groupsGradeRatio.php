@@ -71,6 +71,9 @@ function generateGroupsGradeRatioChart($subjectName)
                         categories: <?= json_encode($groups) ?>
                     },
                 },
+                padding: {
+                    left: 85
+                },
                 bar: {
                     space: 0.5,
                     width: {

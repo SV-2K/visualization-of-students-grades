@@ -1,0 +1,30 @@
+main .c3-axis-x path,
+main .c3-axis-x line,
+main .c3-axis-y path,
+main .c3-axis-y line {
+    stroke: var(--accent-color); /* Цвет линий осей */
+}
+main .charts svg{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+}
+.c3-axis-x .tick text,
+.c3-axis-y .tick text {
+    fill: var(--accent-color); /* Цвет текста осей */
+}
+.c3-legend-item text {
+    fill: var(--accent-color); /* Цвет текста легенды */
+    font-size: 13px;
+}
+#subject-grade-ratio .c3-legend-item text {
+    fill: var(--main-color); /* Цвет текста легенды */
+}
+#subject-grade-ratio path{
+    stroke: transparent;
+}
+#subject-grade-ratio .c3-chart-arcs text {
+    fill: var(--main-color); /* Цвет текста */
+}
+
+
+

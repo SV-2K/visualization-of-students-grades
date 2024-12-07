@@ -13,20 +13,17 @@ header {
 .top-menu {
     display: flex;
     justify-content: space-between;
-    gap: 5px;
     margin: 0 auto;
-    padding: 5px;
-    background-color: var(--main-color);
-    border: solid 1px var(--accent-color);
+    background-color: var(--accent-color);
 }
 .header-button {
-    background-color: var(--accent-color);
-    color: var(--main-color);
+    background-color: var(--main-color);
+    color: var(--accent-color);
     padding: 5px 10px;
 }
 .header-button2 {
-    background-color: var(--main-color);
-    color: var(--accent-color);
+    background-color: var(--accent-color);
+    color: var(--main-color);
     padding: 5px 10px;
     border: solid 1px var(--accent-color);
 }
@@ -39,8 +36,8 @@ main {
     gap: 1px;
 }
 .menu {
-    height: 50px;
     background-color: var(--accent-color);
+    padding: 5px;
 }
 .charts {
     display: flex;
@@ -63,12 +60,11 @@ p{
 .group-info, #subject-grade-ratio {
     width: 400px;
     background-color: var(--accent-color);
-    border: solid 1px var(--accent-color);
 }
 #groups-grade-ratio, #average-grade {
     height: 300px;
     width: 600px;
-    background-color: grey;
+    background-color: var(--main-color);
     border: solid 1px var(--accent-color);
 }
 .group-info {
@@ -104,4 +100,11 @@ p{
     flex-grow: 1;
     background-color: var(--main-color);
     border: solid 3px var(--main-color);
+}
+select{
+    color: var(--accent-color);
+    background-color: var(--main-color);
+    height: 30px;
+    font-family: 'JetBrains Mono', monospace;
+
 }

@@ -12,13 +12,14 @@
         }
     </style>
     <?php
-    require 'vendor/autoload.php';
-    require 'dbRequests.php';
+    require '../../../vendor/autoload.php';
+    require '../db/dbRequests.php';
     use PhpOffice\PhpSpreadsheet\IOFactory;
+
     ini_set('memory_limit', '512M');  #Увеличение лимита памяти, потому что таблица большая жесть просто
 
     try {
-        $spreadsheet = IOFactory::load('example.xlsx');
+        $spreadsheet = IOFactory::load('../db/example.xlsx');
         $sheetCount = $spreadsheet->getSheetCount();
 
         for ($var = 0; $var < $sheetCount; $var++) {
@@ -111,6 +112,7 @@
             echo '</table>';
             echo '<br>';
         }
+
     } catch (\PhpOffice\PhpSpreadsheet\Reader\Exception $e) {
         echo 'Ошибка при чтении файла: ' . $e->getMessage();
     }

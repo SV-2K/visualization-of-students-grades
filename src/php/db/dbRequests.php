@@ -50,18 +50,22 @@ function enterSubject($subjectName): void
 {
     global $pdo;
 
+    #избавляемся от двойных пробелов, ибо потом из за этого статистика по предмету ломается
+    $fixedSubjectName = preg_replace('/\s+/', ' ', $subjectName);
+
     $stmt = $pdo->prepare('INSERT IGNORE INTO subjects (name) VALUES (:name)');
     $stmt->execute([
-        'name' => $subjectName
+        'name' => $fixedSubjectName
     ]);
 }
 function getSubjectId($subjectName)
 {
     global $pdo;
+    $subjectNameWithNoDoubleSpaces = preg_replace('/\s+/', ' ', $subjectName);
 
     $stmt = $pdo->prepare('SELECT id FROM subjects WHERE name = :name');
     $stmt->execute([
-        'name' => $subjectName,
+        'name' => $subjectNameWithNoDoubleSpaces,
     ]);
     $subject = $stmt->fetch();
 
