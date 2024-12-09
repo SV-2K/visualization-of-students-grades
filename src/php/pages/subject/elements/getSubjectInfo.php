@@ -1,6 +1,4 @@
 <?php
-require '../db/dbConnect.php';
-global $pdo;
 
 if (isset($_POST['subject'])) {
     $subjectName = $_POST['subject'];

@@ -15,21 +15,17 @@ global $pdo;
 try {
     $stmt = $pdo->prepare('
     SELECT
-        COUNT(DISTINCT `groups`.id) AS groups_count
+        COUNT(students.name) AS student_count
     FROM
-        grades
+        students
     JOIN
-        students ON grades.student_id = students.id
-    JOIN
-        subjects ON grades.subject_id = subjects.id
-    JOIN
-        `groups` ON students.group_id = groups.id
+        `groups` ON students.group_id = `groups`.id
     WHERE
-        subjects.name = :name
-');
+        `groups`.name = :name
+    ');
 
     $stmt->execute([
-        'name' => 'Литература (Рудакова Л.В.)'
+        'name' => '9ПР-1.22'
     ]);
     $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

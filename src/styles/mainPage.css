@@ -14,7 +14,6 @@ header {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    background-color: var(--accent-color);
 }
 .header-button {
     background-color: var(--main-color);
@@ -57,7 +56,7 @@ p{
     flex-direction: row;
     gap: 5px;
 }
-.group-info, #subject-grade-ratio {
+.info, #subject-grade-ratio {
     width: 400px;
     background-color: var(--accent-color);
 }
@@ -67,14 +66,14 @@ p{
     background-color: var(--main-color);
     border: solid 1px var(--accent-color);
 }
-.group-info {
+.info {
     display: flex;
     flex-direction: column;
     gap: 5px;
     padding: 5px;
     font-size: 15px;
 }
-.group-info p {
+.info p {
     color: var(--accent-color);
     background-color: var(--main-color);
     padding: 5px;

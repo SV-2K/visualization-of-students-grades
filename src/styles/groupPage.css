@@ -1,0 +1,25 @@
+#group-info {
+}
+.top-left-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.group-grade-ratio {
+    background-color: white;
+    height: 300px;
+}
+#absolute-performance {
+    background-color: grey;
+    height: 500px;
+    flex-grow: 1;
+}
+#subjects-grade-ratio {
+    background-color: white;
+    height: 600px;
+    width: 750px;
+}
+#attendance-rate {
+    flex-grow: 1;
+    background-color: white;
+}
