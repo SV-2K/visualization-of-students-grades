@@ -15,9 +15,12 @@ global $pdo;
 try {
     $stmt = $pdo->prepare('
     SELECT
-        COUNT(students.name) AS student_count
+        SUM(attendance.invalid_absence_hours) AS invalid_hours,
+        SUM(attendance.valid_absence_hours) AS valid_hours
     FROM
-        students
+        attendance
+    JOIN
+        students ON attendance.student_id = students.id
     JOIN
         `groups` ON students.group_id = `groups`.id
     WHERE
@@ -25,7 +28,7 @@ try {
     ');
 
     $stmt->execute([
-        'name' => '9ПР-1.22'
+        'name' => '9ПР-2.21'
     ]);
     $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

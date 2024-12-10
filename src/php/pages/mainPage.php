@@ -38,6 +38,9 @@
                 case 'group':
                     require 'group/groupPage.php';
                     break;
+                case 'college':
+                    require 'college/collegePage.php';
+                    break;
             }
         } else {
             require 'subject/subjectPage.php';

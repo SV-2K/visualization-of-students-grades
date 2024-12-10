@@ -1,5 +1,3 @@
-#group-info {
-}
 .top-left-info {
     display: flex;
     flex-direction: column;
@@ -7,19 +5,21 @@
 }
 .group-grade-ratio {
     background-color: white;
-    height: 300px;
+}
+#absolute-performance, #subjects-grade-ratio, #attendance-rate {
+    border: solid 1px var(--accent-color);
 }
 #absolute-performance {
-    background-color: grey;
     height: 500px;
     flex-grow: 1;
 }
 #subjects-grade-ratio {
-    background-color: white;
-    height: 600px;
+    height: 250px;
     width: 750px;
 }
 #attendance-rate {
     flex-grow: 1;
-    background-color: white;
+}
+#subjects-grade-ratio .tick text {
+    font-size: 10px;
 }

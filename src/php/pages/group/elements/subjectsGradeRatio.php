@@ -72,7 +72,7 @@ function generateSubjectsGradeRatio($groupName)
                         categories: <?= json_encode($subjects) ?>,
                         tick: {
                             multiline: true,
-                            multilineMax: 1
+                            multilineMax: 2,
                         }
                     },
                     y: {

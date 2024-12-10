@@ -12,6 +12,8 @@
             require 'elements/getGroupInfo.php';
             require 'elements/groupGradeRatio.php';
             require 'elements/subjectsGradeRatio.php';
+            require 'elements/qualityPerformance.php';
+            require 'elements/attendanceRate.php';
 
             global $pdo, $averageGrade, $absolutePerformance, $qualityPerformance, $studentCount;
 
@@ -69,7 +71,7 @@
         <div id="absolute-performance">
             <?php
             if (!empty($selectedOption)) {
-//                generateSubjectsGradeRatio($selectedOption);
+                generateQualityPerformance($selectedOption);
             }
             ?>
         </div>
@@ -85,7 +87,7 @@
         <div id="attendance-rate">
             <?php
             if (!empty($selectedOption)) {
-//                generateGradeRatioChart($selectedOption);
+                generateAttendanceRate($selectedOption);
             }
             ?>
         </div>
