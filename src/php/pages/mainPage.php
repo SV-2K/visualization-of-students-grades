@@ -35,9 +35,11 @@
                 case 'subject':
                     require 'subject/subjectPage.php';
                     break;
+
                 case 'group':
                     require 'group/groupPage.php';
                     break;
+
                 case 'college':
                     require 'college/collegePage.php';
                     break;

@@ -15,21 +15,20 @@ global $pdo;
 try {
     $stmt = $pdo->prepare('
     SELECT
-        SUM(attendance.invalid_absence_hours) AS invalid_hours,
-        SUM(attendance.valid_absence_hours) AS valid_hours
+        subjects.name AS subject_name,
+        (SUM(CASE WHEN grades.grade IN (4, 5) THEN 1 ELSE 0 END) * 100.0) / 
+        SUM(CASE WHEN grades.grade IN (2, 3, 4, 5) THEN 1 ELSE 0 END) AS quality_performance
     FROM
-        attendance
+        grades
     JOIN
-        students ON attendance.student_id = students.id
+        students ON grades.student_id = students.id
     JOIN
-        `groups` ON students.group_id = `groups`.id
-    WHERE
-        `groups`.name = :name
+        subjects ON grades.subject_id = subjects.id
+    GROUP BY
+        subjects.name
     ');
 
-    $stmt->execute([
-        'name' => '9ПР-2.21'
-    ]);
+    $stmt->execute();
     $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo '<pre>';
