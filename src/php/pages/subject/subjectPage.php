@@ -1,3 +1,4 @@
+<link rel="stylesheet"  href="../../styles/subjectPage.css">
 <p>some_file_name.xlsx</p>
 <div class="menu">
     <form method="post">

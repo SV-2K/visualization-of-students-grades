@@ -31,6 +31,10 @@ function generateAttendanceRate($groupName)
         document.addEventListener("DOMContentLoaded", function () {
             c3.generate({
                 bindto: '#attendance-rate',
+                title: {
+                    text: 'Пропуски',
+                    position: 'top-center'
+                },
                 data: {
                     columns: <?= json_encode($attendance) ?>,
                     type: 'bar',
@@ -41,6 +45,9 @@ function generateAttendanceRate($groupName)
                 },
                 bar: {
                     width: 50
+                },
+                color: {
+                    pattern: ['#79d200', '#599900']
                 },
                 axis: {
                     x: {

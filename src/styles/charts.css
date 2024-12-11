@@ -16,15 +16,12 @@ main .charts svg{
     fill: var(--accent-color); /* Цвет текста легенды */
     font-size: 13px;
 }
-#subject-grade-ratio .c3-legend-item text {
-    fill: var(--main-color); /* Цвет текста легенды */
-}
-#subject-grade-ratio path{
-    stroke: transparent;
-}
-#subject-grade-ratio .c3-chart-arcs text {
-    fill: var(--main-color); /* Цвет текста */
+#grade-ratio path{
+    stroke: var(--main-color);
 }
 
+#subject-grade-ratio, #grade-ratio .c3-chart-arcs text {
+    fill: var(--main-color); /* Цвет текста */
+}
 
 

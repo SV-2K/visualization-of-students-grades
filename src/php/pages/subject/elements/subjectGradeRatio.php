@@ -49,15 +49,22 @@ function generateGradeRatioChart($subjectName)
         document.addEventListener("DOMContentLoaded", function () {
             c3.generate({
                 bindto: '#subject-grade-ratio',
+                title: {
+                    text: 'Соотношение оценок предмета'
+                },
                 data: {
                     columns: <?= json_encode($grades)?>,
-                    type: 'donut'
+                    type: 'donut',
+                    order: null
                 },
                 legend: {
                     position: 'right'
                 },
                 size: {
                     width: 380
+                },
+                color: {
+                    pattern: ['#79d200', '#599900']
                 },
                 transition: {
                     duration: 1000

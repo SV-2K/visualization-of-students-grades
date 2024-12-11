@@ -20,16 +20,15 @@ header {
     color: var(--accent-color);
     padding: 5px 10px;
 }
-.header-button2 {
+.header-button-active {
     background-color: var(--accent-color);
     color: var(--main-color);
     padding: 5px 10px;
-    border: solid 1px var(--accent-color);
 }
 main {
     width: 1000px;
     min-height: 300px;
-    margin: 75px auto;
+    margin: 75px auto 0 auto;
     display: flex;
     flex-direction: column;
     gap: 1px;
@@ -44,7 +43,7 @@ main {
     gap: 5px;
     margin-top: 5px;
     padding: 5px;
-    border: solid 1px var(--accent-color);
+    background-color: var(--accent-color);
     min-height: 300px;
 }
 p{
@@ -56,21 +55,14 @@ p{
     flex-direction: row;
     gap: 5px;
 }
-.info, #subject-grade-ratio {
+.info {
     width: 400px;
     background-color: var(--accent-color);
-}
-#groups-grade-ratio, #average-grade {
-    height: 300px;
-    width: 600px;
-    background-color: var(--main-color);
-    border: solid 1px var(--accent-color);
 }
 .info {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    padding: 5px;
     font-size: 15px;
 }
 .info p {
@@ -104,5 +96,12 @@ select{
     color: var(--accent-color);
     background-color: var(--main-color);
     height: 30px;
+    font-family: 'JetBrains Mono', monospace;
+}
+a {
+    text-decoration: none;
+}
+main .c3-title {
+    fill: var(--accent-color);
     font-family: 'JetBrains Mono', monospace;
 }

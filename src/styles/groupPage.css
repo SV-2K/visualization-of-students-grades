@@ -3,19 +3,16 @@
     flex-direction: column;
     gap: 5px;
 }
-.group-grade-ratio {
-    background-color: white;
+#quality-performance, #subjects-grade-ratio, #attendance-rate, #group-grade-ratio{
+    background-color: var(--main-color);
 }
-#absolute-performance, #subjects-grade-ratio, #attendance-rate {
-    border: solid 1px var(--accent-color);
-}
-#absolute-performance {
+#quality-performance {
     height: 500px;
     flex-grow: 1;
 }
 #subjects-grade-ratio {
     height: 250px;
-    width: 750px;
+    width: 90%;
 }
 #attendance-rate {
     flex-grow: 1;
@@ -23,3 +20,17 @@
 #subjects-grade-ratio .tick text {
     font-size: 10px;
 }
+#group-grade-ratio {
+    width: 100%;
+    min-height: 300px;
+}
+#quality-performance {
+    height: 471px;
+}
+.c3-chart-arc path {
+    stroke: var(--main-color);
+}
+.c3-chart-arc text {
+    fill: var(--main-color);
+}
+

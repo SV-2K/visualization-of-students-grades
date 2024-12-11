@@ -68,7 +68,7 @@
                 ?>
             </div>
         </div>
-        <div id="absolute-performance">
+        <div id="quality-performance">
             <?php
             if (!empty($selectedOption)) {
                 generateQualityPerformance($selectedOption);

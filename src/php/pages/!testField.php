@@ -11,32 +11,46 @@
 <?php
 require '../db/dbConnect.php';
 global $pdo;
+function generateAveradeGradeChart($subjectName)
+{
+    global $pdo;
 
-try {
     $stmt = $pdo->prepare('
-    SELECT
-        subjects.name AS subject_name,
-        (SUM(CASE WHEN grades.grade IN (4, 5) THEN 1 ELSE 0 END) * 100.0) / 
-        SUM(CASE WHEN grades.grade IN (2, 3, 4, 5) THEN 1 ELSE 0 END) AS quality_performance
-    FROM
+    SELECT 
+        `groups`.name AS group_name, 
+        AVG(grades.grade) AS average_grade
+    FROM 
         grades
-    JOIN
+    JOIN 
         students ON grades.student_id = students.id
-    JOIN
+    JOIN 
+        `groups` ON students.group_id = `groups`.id
+    JOIN 
         subjects ON grades.subject_id = subjects.id
-    GROUP BY
-        subjects.name
+    WHERE 
+        subjects.name = :subject_name
+    GROUP BY 
+        `groups`.name
+    ORDER BY 
+        average_grade DESC;
     ');
 
-    $stmt->execute();
-    $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->execute([
+        'subject_name' => $subjectName
+    ]);
+    $res = $stmt->fetchAll();
 
-    echo '<pre>';
-    print_r($res);
-    echo '</pre>';
-} catch (PDOException $e) {
-    die("Error!: " . $e->getMessage());
+    $groups = [];
+    $averageGrades = [''];
+    foreach ($res as $row) {
+        $groups[] = $row['group_name'];
+        $averageGrades[] = round($row['average_grade'], 2);
+
+    }
+    echo '33333';
+    print_r($groups);
 }
+generateAveradeGradeChart('ИЯВПД (Коваленко С.В./Руднев В.А.)');
 
 ?>
 </body>

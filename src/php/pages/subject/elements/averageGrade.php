@@ -28,35 +28,51 @@ function generateAveradeGradeChart($subjectName)
     ]);
     $res = $stmt->fetchAll();
 
-    $data = [];
+    $groups = [];
+    $averageGrades = [''];
     foreach ($res as $row) {
-        $data[] = [$row['group_name'], round((float)$row['average_grade'], 2)];
+        $groups[] = $row['group_name'];
+        $averageGrades[] = round($row['average_grade'], 2);
     }
 ?>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             c3.generate({
                 bindto: '#average-grade',
+                title: {
+                    text: 'Средний балл по группам'
+                },
                 data: {
-                    columns: <?= json_encode($data) ?>,
+                    columns: [
+                        <?= json_encode($averageGrades) ?>
+                    ],
                     type: 'bar'
                 },
                 legend: {
-                    position: 'right'
+                    show: false
+                },
+                padding: {
+                    left: 90
                 },
                 axis: {
                     rotated: true,
-                    y: {
+                    x: {
+                        type: 'category',
+                        categories: <?= json_encode($groups) ?>,
                         tick: {
-                            format: d3.format(".1f")
+                            multiline: false,
+                            multilineMax: 1,
                         }
-                    }
+                    },
                 },
                 bar: {
                     space: 0.5,
                     width: {
                         ratio: 0.9
                     }
+                },
+                color: {
+                    pattern: ['#79d200', '#599900']
                 },
                 transition: {
                     duration: 1000

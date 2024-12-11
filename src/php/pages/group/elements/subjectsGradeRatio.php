@@ -53,6 +53,9 @@ function generateSubjectsGradeRatio($groupName)
         document.addEventListener("DOMContentLoaded", function () {
             c3.generate({
                 bindto: '#subjects-grade-ratio',
+                title: {
+                    text: 'Соотношение оценок по предметам'
+                },
                 data: {
                     columns: <?= json_encode($grades)?>,
                     type: 'bar',
@@ -71,15 +74,17 @@ function generateSubjectsGradeRatio($groupName)
                         type: 'category',
                         categories: <?= json_encode($subjects) ?>,
                         tick: {
-                            multiline: true,
-                            multilineMax: 2,
+                            multiline: false,
+                            multilineMax: 1,
                         }
                     },
                     y: {
                         show: false
                     }
                 },
-
+                color: {
+                    pattern: ['#79d200', '#599900']
+                },
                 transition: {
                     duration: 1000
                 }

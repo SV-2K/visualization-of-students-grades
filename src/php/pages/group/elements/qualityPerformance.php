@@ -20,6 +20,8 @@ function generateQualityPerformance($groupName)
         `groups`.name = :group_name
     GROUP BY
         subjects.name
+    ORDER BY
+        quality_performance DESC
     ');
 
     $stmt->execute([
@@ -27,29 +29,48 @@ function generateQualityPerformance($groupName)
     ]);
     $res = $stmt->fetchAll();
 
-    $performance = [];
+    $subjects = [];
+    $performance = [''];
 
     foreach ($res as $key => $row) {
-        $performance[$key][] = $row['subject_name'];
-        $performance[$key][] = $row['quality_performance'];
+        $subjects[] = $row['subject_name'];
+        $performance[] = $row['quality_performance'];
     }
     ?>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             c3.generate({
-                bindto: '#absolute-performance',
+                bindto: '#quality-performance',
+                title: {
+                    text: 'Качественная успеваемость по предметам в %'
+                },
                 data: {
-                    columns: <?= json_encode($performance)?>,
-                    type: 'bar',
-                    groups: [
-                        ['5', '4', '3', '2']
+                    columns: [
+                        <?= json_encode($performance)?>
                     ],
+                    type: 'bar',
                     order: null
                 },
                 axis: {
                     rotated: true,
+                    x: {
+                        type: 'category',
+                        categories: <?= json_encode($subjects) ?>,
+                        tick: {
+                            multiline: false,
+                            multilineMax: 1,
+                        }
+                    },
                 },
-
+                legend: {
+                    show: false
+                },
+                padding: {
+                    left: 220
+                },
+                color: {
+                    pattern: ['#79d200']
+                },
                 transition: {
                     duration: 1000
                 }

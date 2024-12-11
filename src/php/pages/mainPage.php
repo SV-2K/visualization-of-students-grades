@@ -5,26 +5,27 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../styles/mainPage.css">
+    <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/charts.css">
     <link rel="stylesheet" href="../../../node_modules/c3/c3.min.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
     <title>Document</title>
+    <?php if (!isset($_GET['stat'])) $_GET['stat'] = 'group' ?>
 </head>
 <body>
     <header>
         <div class="top-menu">
-            <a href="?stat=subject" class="header-button2">
-                Предмет
-            </a>
-            <a href="?stat=group" class="header-button">
+            <a href="?stat=group" class="<?php echo $_GET['stat'] == 'group' ? 'header-button-active' : 'header-button'?>">
                 Группа
             </a>
-            <a href="?stat=department" class="header-button">
+            <a href="?stat=department" class="<?php echo $_GET['stat'] == 'department' ? 'header-button-active' : 'header-button'?>">
                 Отделение
             </a>
-            <a href="?stat=college" class="header-button">
+            <a href="?stat=college" class="<?php echo $_GET['stat'] == 'college' ? 'header-button-active' : 'header-button'?>">
                 Колледж
+            </a>
+            <a href="?stat=subject" class="<?php echo $_GET['stat'] == 'subject' ? 'header-button-active' : 'header-button'?>">
+                Предмет
             </a>
         </div>
     </header>
@@ -45,7 +46,8 @@
                     break;
             }
         } else {
-            require 'subject/subjectPage.php';
+            $_GET['stat'] = 'group';
+            require 'group/groupPage.php';
         }
         ?>
     </main>

@@ -50,22 +50,22 @@ function enterSubject($subjectName): void
 {
     global $pdo;
 
-    #избавляемся от двойных пробелов, ибо потом из за этого статистика по предмету ломается
-    $fixedSubjectName = preg_replace('/\s+/', ' ', $subjectName);
+    $subjectName = shortenSubjectName($subjectName);
 
     $stmt = $pdo->prepare('INSERT IGNORE INTO subjects (name) VALUES (:name)');
     $stmt->execute([
-        'name' => $fixedSubjectName
+        'name' => $subjectName
     ]);
 }
 function getSubjectId($subjectName)
 {
     global $pdo;
-    $subjectNameWithNoDoubleSpaces = preg_replace('/\s+/', ' ', $subjectName);
+
+    $subjectName = shortenSubjectName($subjectName);
 
     $stmt = $pdo->prepare('SELECT id FROM subjects WHERE name = :name');
     $stmt->execute([
-        'name' => $subjectNameWithNoDoubleSpaces,
+        'name' => $subjectName,
     ]);
     $subject = $stmt->fetch();
 
@@ -124,4 +124,32 @@ function enterAbsence($invalidAbsenceHours, $validAbsenceHours, $studentId, $mon
         'invalid_absence_hours' => $invalidAbsenceHours,
         'valid_absence_hours' => $validAbsenceHours
     ]);
+}
+function shortenSubjectName($subjectName)
+{
+    $subjectName = preg_replace('/\s+/', ' ', $subjectName);
+
+    preg_match('/\((.*?)\)$/', $subjectName, $matches);
+
+    $teachers = $matches[0] ?? '';
+
+    $subjectWithoutTeachers = preg_replace('/\s*\(.*$/', '', $subjectName);
+
+    if (mb_strpos($subjectWithoutTeachers, ' ') === false) {
+        return $subjectWithoutTeachers . ' ' . $teachers;
+    }
+
+    $words = explode(' ', $subjectWithoutTeachers);
+
+    $filteredWords = array_filter($words, function ($word) {
+        return !preg_match('/\d/', $word);
+    });
+
+    $abbreviation = implode('', array_map(function ($word) {
+        return mb_substr($word, 0, 1);
+    }, $filteredWords));
+
+    $abbreviation = mb_strtoupper($abbreviation);
+
+    return $abbreviation . ' ' . $teachers;
 }

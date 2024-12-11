@@ -14,21 +14,23 @@
 .info {
     height: auto;
 }
+#attendance-rate, #groups-average-grade, #grade-ratio, #subjects-quality-performance {
+    background-color: var(--main-color);
+}
 #attendance-rate {
     flex-grow: 1;
-    background-color: white;
 }
 #groups-average-grade {
     margin-top: 5px;
-    background-color: white;
     height: 500px;
 }
 #grade-ratio {
     margin-top: 5px;
-    background-color: white;
     height: 300px;
 }
 #subjects-quality-performance {
-    background-color: white;
     flex-grow: 1;
+}
+#subjects-quality-performance .tick text {
+    font-size: 12px;
 }

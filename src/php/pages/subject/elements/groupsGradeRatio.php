@@ -51,6 +51,9 @@ function generateGroupsGradeRatioChart($subjectName)
         document.addEventListener("DOMContentLoaded", function () {
             c3.generate({
                 bindto: '#groups-grade-ratio',
+                title: {
+                    text: 'Соотношение оценок в группах'
+                },
                 data: {
                     columns: <?= json_encode($grades) ?>,
                     // columns: [
@@ -79,6 +82,9 @@ function generateGroupsGradeRatioChart($subjectName)
                     width: {
                         ratio: 0.8
                     }
+                },
+                color: {
+                    pattern: ['#79d200', '#599900']
                 },
                 transition: {
                     duration: 1000

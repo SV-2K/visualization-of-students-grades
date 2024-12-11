@@ -34,6 +34,9 @@ function generateQualityPerformance()
         document.addEventListener("DOMContentLoaded", function () {
             c3.generate({
                 bindto: '#subjects-quality-performance',
+                title: {
+                    text: 'Качественная успеваемость по предметам'
+                },
                 data: {
                     columns: [
                         <?= json_encode($performance) ?>
@@ -48,10 +51,16 @@ function generateQualityPerformance()
                         type: 'category',
                         categories: <?= json_encode($subjects) ?>,
                         tick: {
-                            multiline: true,
+                            multiline: false,
                             multilineMax: 1,
                         }
                     }
+                },
+                size: {
+                    height: 1007
+                },
+                color: {
+                    pattern: ['#79d200']
                 },
                 legend: {
                     show: false

@@ -1,0 +1,15 @@
+#groups-grade-ratio, #average-grade {
+    height: 300px;
+    width: 600px;
+    background-color: var(--main-color);
+}
+#subject-grade-ratio {
+    width: 400px;
+    background-color: var(--main-color);
+}
+.c3-chart-arc path {
+    stroke: var(--main-color);
+}
+.c3-chart-arc text {
+    fill: var(--main-color);
+}
