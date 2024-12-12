@@ -11,6 +11,20 @@ try {
     print "Error!: " . $e->getMessage() . "<br/>";
 }
 
+function cleanDB()
+{
+    global $pdo;
+
+    $pdo->query('
+    SET SQL_SAFE_UPDATES = 0;
+    DELETE FROM attendance;
+    DELETE FROM grades;
+    DELETE FROM students;
+    DELETE FROM subjects;
+    DELETE FROM `groups`;
+    SET SQL_SAFE_UPDATES = 1;
+    ');
+}
 function getMonitoringId($monitoringName)
 {
     global $pdo;

@@ -105,3 +105,81 @@ main .c3-title {
     fill: var(--accent-color);
     font-family: 'JetBrains Mono', monospace;
 }
+.content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+#menu-toggle {
+    display: none;
+}
+.menu-icon {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    color: var(--accent-color);
+}
+.side-menu {
+    padding-top: 50px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: var(--accent-color);
+    color: var(--main-color);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+#menu-toggle:checked ~ .side-menu {
+    left: 0;
+}
+.side-menu form {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-label {
+    color: #ecf0f1;
+    font-size: 16px;
+}
+
+#file-upload {
+    padding: 5px;
+    font-size: 14px;
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: 1px solid #2c3e50;
+    border-radius: 4px;
+    outline: none;
+}
+
+#file-upload:hover,
+#file-upload:focus {
+    background-color: #3b4b5b;
+}
+
+.upload-button {
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #1abc9c;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    disabled: true;
+}
+
+.upload-button:hover:enabled {
+    background-color: #16a085;
+}
+
+.upload-button:disabled {
+    background-color: #7f8c8d;
+    cursor: default;
+}
