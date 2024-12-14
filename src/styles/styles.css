@@ -1,8 +1,8 @@
 body {
+    /*--main-color: #000;*/
+    /*--accent-color: #79d200;*/
     --main-color: #000;
-    --accent-color: #79d200;
-    /*--main-color: #001e01;*/
-    /*--accent-color: #f2a96d;*/
+    --accent-color: #fff;
     font-family: 'JetBrains Mono', monospace;
     background-color: var(--main-color);
 }
@@ -110,76 +110,49 @@ main .c3-title {
     position: relative;
     z-index: 1;
 }
+
 #menu-toggle {
     display: none;
 }
 .menu-icon {
     position: fixed;
-    top: 10px;
-    left: 10px;
-    font-size: 24px;
+    top: 15px;
+    left: 15px;
+    font-size: 36px;
     cursor: pointer;
     z-index: 1000;
     color: var(--accent-color);
 }
 .side-menu {
-    padding-top: 50px;
     position: fixed;
     top: 0;
-    left: -250px;
+    left: -295px; /* Меню скрыто */
     width: 250px;
     height: 100%;
-    background-color: var(--accent-color);
-    color: var(--main-color);
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--main-color);
+    color: var(--accent-color);
+    border-right: solid 5px var(--accent-color);
+    padding: 80px 20px;
     z-index: 999;
 }
-#menu-toggle:checked ~ .side-menu {
-    left: 0;
-}
-.side-menu form {
-    margin: 15px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
-.file-label {
-    color: #ecf0f1;
-    font-size: 16px;
+/* Отображение меню, если чекбокс включен */
+#menu-toggle:checked + .menu-icon + .side-menu {
+    left: 0; /* Показываем меню */
 }
+.side-menu input[type="file"] {
+    display: block;
+    margin: 10px 0;
+    font-family: 'JetBrains Mono', monospace;
 
-#file-upload {
-    padding: 5px;
-    font-size: 14px;
-    background-color: #34495e;
-    color: #ecf0f1;
-    border: 1px solid #2c3e50;
-    border-radius: 4px;
-    outline: none;
 }
-
-#file-upload:hover,
-#file-upload:focus {
-    background-color: #3b4b5b;
-}
-
 .upload-button {
-    padding: 8px 15px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #1abc9c;
+    background-color: var(--accent-color);
+    color: var(--main-color);
     border: none;
-    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
     cursor: pointer;
-    disabled: true;
-}
-
-.upload-button:hover:enabled {
-    background-color: #16a085;
-}
-
-.upload-button:disabled {
-    background-color: #7f8c8d;
-    cursor: default;
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
 }

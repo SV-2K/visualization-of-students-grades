@@ -64,7 +64,7 @@ function generateGradeRatioChart($subjectName)
                     width: 380
                 },
                 color: {
-                    pattern: ['#79d200', '#599900']
+                    pattern: ['#7abd7e', '#b9ca77', '#F8D66F', '#ff6961']
                 },
                 transition: {
                     duration: 1000

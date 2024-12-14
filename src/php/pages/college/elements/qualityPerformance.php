@@ -35,14 +35,33 @@ function generateQualityPerformance()
             c3.generate({
                 bindto: '#subjects-quality-performance',
                 title: {
-                    text: 'Качественная успеваемость по предметам'
+                    text: 'Качественная успеваемость по предметам в %'
                 },
                 data: {
                     columns: [
                         <?= json_encode($performance) ?>
                     ],
                     type: 'bar',
-                    order: null
+                    order: null,
+                    color: function (color, d) {
+                        if (d && d.value) {
+                            if (d.value > 80) {
+                                return '#7abd7e';
+                            } else if (d.value > 60) {
+                                return '#B9CA77';
+                            } else if (d.value > 40) {
+                                return '#F8D66F';
+                            } else {
+                                return '#ff6961';
+                            }
+                        }
+                        return color;
+                    },
+                    labels: {
+                        format: function (v) {
+                            return v;
+                        }
+                    }
                 },
                 axis: {
                     rotated: true,
@@ -54,16 +73,19 @@ function generateQualityPerformance()
                             multiline: false,
                             multilineMax: 1,
                         }
+                    },
+                    y: {
+                        show: false
                     }
                 },
                 size: {
                     height: 1007
                 },
-                color: {
-                    pattern: ['#79d200']
-                },
                 legend: {
                     show: false
+                },
+                padding: {
+                    bottom: 10
                 },
                 transition: {
                     duration: 1000

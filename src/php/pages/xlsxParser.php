@@ -4,7 +4,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xlsxFile'])) {
 
     require '../../../vendor/autoload.php';
-    require '../db/dbRequests.php';
+    require '../db/parserRequests.php';
 
 
     ini_set('memory_limit', '256M');  #Увеличение лимита памяти, потому что таблица большая жесть просто
@@ -13,6 +13,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xlsxFile'])) {
 
         $uploadedFile = $_FILES['xlsxFile']['tmp_name'];
         try {
+
+            $fileName = $_FILES['xlsxFile']['name'];
+            updateMonitoringName($fileName);
             cleanDB();
 
             $spreadsheet = IOFactory::load($uploadedFile);

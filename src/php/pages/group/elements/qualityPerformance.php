@@ -34,7 +34,7 @@ function generateQualityPerformance($groupName)
 
     foreach ($res as $key => $row) {
         $subjects[] = $row['subject_name'];
-        $performance[] = $row['quality_performance'];
+        $performance[] = round($row['quality_performance'], 2);
     }
     ?>
     <script>
@@ -49,7 +49,26 @@ function generateQualityPerformance($groupName)
                         <?= json_encode($performance)?>
                     ],
                     type: 'bar',
-                    order: null
+                    order: null,
+                    color: function (color, d) {
+                        if (d && d.value) {
+                            if (d.value > 70) {
+                                return '#7abd7e';
+                            } else if (d.value > 60) {
+                                return '#B9CA77';
+                            } else if (d.value > 50) {
+                                return '#F8D66F';
+                            } else {
+                                return '#ff6961';
+                            }
+                        }
+                        return color;
+                    },
+                    labels: {
+                        format: function (v) {
+                            return v;
+                        }
+                    }
                 },
                 axis: {
                     rotated: true,
@@ -61,12 +80,16 @@ function generateQualityPerformance($groupName)
                             multilineMax: 1,
                         }
                     },
+                    y: {
+                        show: false
+                    }
                 },
                 legend: {
                     show: false
                 },
                 padding: {
-                    left: 220
+                    left: 220,
+                    bottom: 20
                 },
                 color: {
                     pattern: ['#79d200']

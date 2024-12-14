@@ -56,13 +56,7 @@ function generateGroupsGradeRatioChart($subjectName)
                 },
                 data: {
                     columns: <?= json_encode($grades) ?>,
-                    // columns: [
-                    //     ['5', 13, 12, 12, 10, 8],
-                    //     ['4', 7, 8, 8, 7, 10],
-                    //     ['3', 3, 4, 3, 6, 2],
-                    //     ['2', 1, 1, 1, 2, 4]
-                    // ],
-                    type: 'bar'
+                    type: 'bar',
                 },
                 legend: {
                     position: 'right'
@@ -84,7 +78,7 @@ function generateGroupsGradeRatioChart($subjectName)
                     }
                 },
                 color: {
-                    pattern: ['#79d200', '#599900']
+                    pattern: ['#7abd7e', '#b9ca77', '#F8D66F', '#ff6961']
                 },
                 transition: {
                     duration: 1000

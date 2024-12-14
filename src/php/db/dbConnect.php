@@ -10,3 +10,20 @@ try {
 } catch (PDOException $e) {
     die("Error!: " . $e->getMessage());
 }
+
+function getMonitoringName()
+{
+    global $pdo;
+
+    $stmt = $pdo->query('
+    SELECT
+        name
+    FROM
+        monitoring
+    WHERE
+        id = 1
+    ');
+    $monitoring = $stmt->fetch();
+
+    return $monitoring['name'];
+}

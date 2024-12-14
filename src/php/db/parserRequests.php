@@ -25,6 +25,22 @@ function cleanDB()
     SET SQL_SAFE_UPDATES = 1;
     ');
 }
+function updateMonitoringName($monitoringName): void
+{
+    global $pdo;
+
+    $stmt = $pdo->prepare('
+    UPDATE
+        monitoring
+    SET 
+        name = :monitoring_name
+    WHERE
+        id = 1;
+    ');
+    $stmt->execute([
+        'monitoring_name' => $monitoringName
+    ]);
+}
 function getMonitoringId($monitoringName)
 {
     global $pdo;
@@ -36,7 +52,7 @@ function getMonitoringId($monitoringName)
 
     $monitoring = $stmt->fetch();
 
-    return $monitoring['id'];
+    return 1;
 }
 function enterGroup($groupName): void
 {

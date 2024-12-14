@@ -1,16 +1,17 @@
 <link rel="stylesheet"  href="../../styles/subjectPage.css">
-<p>some_file_name.xlsx</p>
+<?php
+require '../db/dbConnect.php';
+require 'elements/getSubjectInfo.php';
+require 'elements/averageGrade.php';
+require 'elements/subjectGradeRatio.php';
+require 'elements/groupsGradeRatio.php';
+?>
+<p><?= getMonitoringName(); ?></p>
 <div class="menu">
     <form method="post">
         <select name="subject" onchange="this.form.submit()">
             <option>--Выберите предмет--</option>
             <?php
-            require '../db/dbConnect.php';
-            require 'elements/getSubjectInfo.php';
-            require 'elements/averageGrade.php';
-            require 'elements/subjectGradeRatio.php';
-            require 'elements/groupsGradeRatio.php';
-
             global $pdo, $selectedOption, $averageGrade, $absolutePerformance,
                    $qualityPerformance, $groupsCount, $studentsCount;
 

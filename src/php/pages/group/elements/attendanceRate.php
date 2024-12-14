@@ -41,13 +41,12 @@ function generateAttendanceRate($groupName)
                     groups: [
                         ['Ув', 'Н/ув']
                     ],
-                    order: null
                 },
                 bar: {
                     width: 50
                 },
                 color: {
-                    pattern: ['#79d200', '#599900']
+                    pattern: ['#F8D66F', '#ff6961']
                 },
                 axis: {
                     x: {

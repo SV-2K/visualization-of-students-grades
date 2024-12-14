@@ -46,13 +46,33 @@ function generateAveradeGradeChart($subjectName)
                     columns: [
                         <?= json_encode($averageGrades) ?>
                     ],
-                    type: 'bar'
+                    type: 'bar',
+                    color: function (color, d) {
+                        if (d && d.value) {
+                            if (d.value > 4) {
+                                return '#7abd7e';
+                            } else if (d.value > 3.75) {
+                                return '#B9CA77';
+                            } else if (d.value > 3.5) {
+                                return '#F8D66F';
+                            } else {
+                                return '#ff6961';
+                            }
+                        }
+                        return color;
+                    },
+                    labels: {
+                        format: function (v) {
+                            return v;
+                        }
+                    }
                 },
                 legend: {
                     show: false
                 },
                 padding: {
-                    left: 90
+                    left: 90,
+                    bottom: 20
                 },
                 axis: {
                     rotated: true,
@@ -64,15 +84,15 @@ function generateAveradeGradeChart($subjectName)
                             multilineMax: 1,
                         }
                     },
+                    y: {
+                        show: false
+                    }
                 },
                 bar: {
                     space: 0.5,
                     width: {
                         ratio: 0.9
                     }
-                },
-                color: {
-                    pattern: ['#79d200', '#599900']
                 },
                 transition: {
                     duration: 1000

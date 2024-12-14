@@ -1,19 +1,21 @@
 <link rel="stylesheet" href="../../styles/groupPage.css">
+<?php
+require '../db/dbConnect.php';
+require 'elements/getGroupInfo.php';
+require 'elements/groupGradeRatio.php';
+require 'elements/subjectsGradeRatio.php';
+require 'elements/qualityPerformance.php';
+require 'elements/attendanceRate.php';
+?>
 <style>
 
 </style>
-<p>some_file_name.xlsx</p>
+<p><?= getMonitoringName(); ?></p>
 <div class="menu">
     <form method="post">
         <select name="group" onchange="this.form.submit()">
             <option>--Выберите группу--</option>
-<!--            --><?php
-            require '../db/dbConnect.php';
-            require 'elements/getGroupInfo.php';
-            require 'elements/groupGradeRatio.php';
-            require 'elements/subjectsGradeRatio.php';
-            require 'elements/qualityPerformance.php';
-            require 'elements/attendanceRate.php';
+            <?php
 
             global $pdo, $averageGrade, $absolutePerformance, $qualityPerformance, $studentCount;
 

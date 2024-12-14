@@ -9,7 +9,7 @@ require 'elements/qualityPerformance.php';
 global $averageGrade, $absolutePerformance, $qualityPerformance, $groupsCount, $studentsCount;
 ?>
 <link rel="stylesheet" href="../../styles/collegePage.css">
-<p>some_file_name.xlsx</p>
+<p><?= getMonitoringName(); ?></p>
 <div class="charts">
     <div class="left-info">
         <div class="top-info">

@@ -18,9 +18,9 @@
 
     <nav class="side-menu">
         <form action="" method="POST" enctype="multipart/form-data">
-            <label for="xlsxFile">Выберите XLSX файл:</label>
-            <input type="file" id="xlsxFile" name="xlsxFile" accept=".xlsx" required>
-            <button type="submit">Загрузить и обработать</button>
+            <label for="xlsxFile">Выберите .xlsx файл мониторинга:</label>
+            <input class="file-input" type="file" id="xlsxFile" name="xlsxFile" accept=".xlsx" required>
+            <button class="upload-button">Загрузить</button>
         </form>
         <iframe name="upload-frame" style="display: none;"></iframe>
     </nav>

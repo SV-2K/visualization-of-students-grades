@@ -31,13 +31,9 @@ function generateAttendanceRate()
                     groups: [
                         ['Ув', 'Н/ув']
                     ],
-                    order: null
                 },
                 bar: {
                     width: 50
-                },
-                color: {
-                    pattern: ['#79d200', '#599900']
                 },
                 axis: {
                     x: {
@@ -51,6 +47,9 @@ function generateAttendanceRate()
                     y: {
                         show: false,
                     }
+                },
+                color: {
+                    pattern: ['#F8D66F', '#ff6961']
                 },
                 size: {
                     height: 502
